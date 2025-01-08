@@ -1,0 +1,39 @@
+---
+title: "Analysis Name"
+author: "Ramya Purkanti"
+date: "Last compiled on `r format(Sys.time(), '%d %B %Y')`"
+output: 
+  html_document:
+    code_fold: hide
+    toc: true
+knit: (function(inputFile, encoding, ouputFile) { rmarkdown::render(inputFile, encoding=encoding, output_file = file.path(paste0(gsub(".Rmd", "_",inputFile), Sys.Date(), ".html"))) })
+---
+
+## Background
+
+What I am doing in this code
+
+**Setting up the workspace**
+
+Loading libraries, setting working directory
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+setwd("/Users/rpurkanti/XXX")
+set.seed(1234)
+```
+
+**Setting up output folder paths**
+
+Here I am making output folders named using date to avoid overwriting files or output when re-knit. This doesnt occur with input files so keeping them as absolute paths.
+
+```{r}
+res_dir <- paste0("results/results_",Sys.Date(),"/")
+robj_dir <- paste0("robjects/robjects_",Sys.Date(),"/")
+dir.create(res_dir, showWarnings = FALSE)
+dir.create(robj_dir, showWarnings = FALSE)
+```
+
